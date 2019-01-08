@@ -127,10 +127,6 @@ void sha1(string text, char *ch) {
     D1 = D = 0x10325476;
     E1 = E = 0xc3d2e1f0;
     append(text);
-//    printX();
-//    for(int i= 0;i < 64;i++){
-//        printf("%x",X[i]);
-//    }
     for (int i = 0; i < Turn; i++) {
         setW(X, i);
         for (int t = 0; t < 80; t++) {

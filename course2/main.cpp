@@ -68,10 +68,11 @@ int main() {
         key[4] = j;
     } while (key_bak.to_string() != key.to_string());
     cout << "Output sequence:" << result << endl;
-
+    cout << "Output sequence cycle : " << result.length() << endl;
     string str = GenString(result.length());
     string c = Encrypt(str, result);
-    cout << "The result of encrypt \"" << str << "\" is" << endl;
-    cout << c;
+    cout << "The result of encrypt \"" << str << "\" is  " << c << endl;
+    c = Encrypt(c, result);
+    cout << "The result of decrypt is  " << c;
     return 0;
 }

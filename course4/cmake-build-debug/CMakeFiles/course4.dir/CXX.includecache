@@ -8,6 +8,14 @@
 
 /Users/zedd/Documents/CryptoCourseDesign/course4/ExEuclid.h
 
+/Users/zedd/Documents/CryptoCourseDesign/course4/Miller.cpp
+cstdlib
+-
+cmath
+-
+Miller.h
+/Users/zedd/Documents/CryptoCourseDesign/course4/Miller.h
+
 /Users/zedd/Documents/CryptoCourseDesign/course4/Miller.h
 
 /Users/zedd/Documents/CryptoCourseDesign/course4/QuickPow.h

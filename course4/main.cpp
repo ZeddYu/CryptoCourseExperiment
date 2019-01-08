@@ -7,32 +7,38 @@
 #include "RSA.h"
 using namespace std;
 
+void PrintHelp(){
+    for (int i = 0; i < 64; ++i) {
+        cout << "*";
+    }
+    cout << endl;
+}
+
 void Task1(){
+    PrintHelp();
     //底数
     int base = 7;
     //模数
     int modules = 5;
+
     int ans = ExEuclid(base,modules);
-    cout << ans << endl;
+    cout << "Base is " << base << ", Modules is " << modules << "" <<endl;
+    cout << "The answer is: " << ans << endl;
+    PrintHelp();
 }
 
 void Task2(){
-    int num = 3;
-    if (Miller(num,10))
+    int num = 1049;
+    if (Miller(num))
         cout << num << " is prime" << endl;
     else
         cout << num << " is not prime" << endl;
+    PrintHelp();
 }
 
 void Task3(){
-    //底数
-    int base = 7;
-    //指数
-    int index = 563;
-    //模数
-    int modules = 5;
-
-    cout << QuickPow(7,563,561);
+    cout << "Cal \"pow(7,563) mod 561 \" : " << QuickPow(7,563,561) << endl;
+    PrintHelp();
 }
 
 void Task5(){
@@ -44,6 +50,11 @@ void Task5(){
 
     int e = 0, d = 0, p = 0, q = 0;
     GenKey(p,q,e,d);
+
+    p = 19;
+    q = 229;
+    e = 5;
+    d = 821;
 
     cout << "p is " << p << endl;
     cout << "q is " << q << endl;
@@ -85,6 +96,7 @@ void Task6(){
     e = 5;
     d = 821;
 
+
     cout << "p is " << p << endl;
     cout << "q is " << q << endl;
     cout << "e is " << e << endl;
@@ -118,6 +130,9 @@ void Task6(){
 
 
 int main(){
-    Task5();
-    Task6();
+//    Task1();
+//    Task2();
+//    Task3();
+//    Task5();
+//    Task6();
 }

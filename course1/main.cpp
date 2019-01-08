@@ -7,7 +7,7 @@ int Num[26];
 int EncryNum[26];
 /* k1 密钥一 */
 int key1 = 2;
-/* k2 密钥二 */
+/* k2 密钥二 key2 与 m 互质*/
 int key2 = 3;
 /* key2 密钥二的乘法逆元 */
 int k2;
