@@ -1,0 +1,42 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/zedd/Documents/CryptoCourseDesign/course4/ExEuclid.h
+
+/Users/zedd/Documents/CryptoCourseDesign/course4/Miller.h
+
+/Users/zedd/Documents/CryptoCourseDesign/course4/QuickPow.h
+
+/Users/zedd/Documents/CryptoCourseDesign/course4/RSA.h
+bitset
+-
+RSA.h
+/Users/zedd/Documents/CryptoCourseDesign/course4/RSA.h
+ExEuclid.h
+/Users/zedd/Documents/CryptoCourseDesign/course4/ExEuclid.h
+QuickPow.h
+/Users/zedd/Documents/CryptoCourseDesign/course4/QuickPow.h
+sstream
+-
+
+/Users/zedd/Documents/CryptoCourseDesign/course4/main.cpp
+iostream
+-
+cstring
+-
+cmath
+-
+ExEuclid.h
+/Users/zedd/Documents/CryptoCourseDesign/course4/ExEuclid.h
+Miller.h
+/Users/zedd/Documents/CryptoCourseDesign/course4/Miller.h
+QuickPow.h
+/Users/zedd/Documents/CryptoCourseDesign/course4/QuickPow.h
+RSA.h
+/Users/zedd/Documents/CryptoCourseDesign/course4/RSA.h
+
