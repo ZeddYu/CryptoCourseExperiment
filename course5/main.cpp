@@ -69,19 +69,25 @@ void Verify(ZZ r, ZZ s, string msg){
 
 
 int main(){
-    cout << "p: ";
-    cin >> p;
-
-    cout << "q: ";
-    cin >> q;
-
-    string msg = "";
-    cout << "msg: ";
-    cin >> msg;
-    ZZ k(21);
-    ZZ r(0);
-    ZZ s(0);
-    Signature(k,msg,r,s);
-    Verify(r,s,msg);
-
+//    cout << "p: ";
+//    cin >> p;
+//
+//    cout << "q: ";
+//    cin >> q;
+//
+//    string msg = "";
+//    cout << "msg: ";
+//    cin >> msg;
+//    ZZ k(21);
+//    ZZ r(0);
+//    ZZ s(0);
+//    Signature(k,msg,r,s);
+//    Verify(r,s,msg);
+    string msg = "abc";
+    char ch[57];
+    sha1(msg,ch);
+    string str = "";
+    for (int i = 0; i < 40; ++i) {
+        str.push_back(ch[i]);
+    }
 }

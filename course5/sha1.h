@@ -12,7 +12,7 @@
 
 using namespace std;
 
-int S(unsigned int x, int n);
+int LeftShift(unsigned int x, int n);
 
 void append(string m);
 

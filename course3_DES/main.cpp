@@ -133,8 +133,7 @@ int P[] = {16,  7, 20, 21,
 /**
  *  密码函数f，接收32位数据和48位子密钥，产生一个32位的输出
  */
-bitset<32> f(bitset<32> R, bitset<48> k)
-{
+bitset<32> f(bitset<32> R, bitset<48> k){
     bitset<48> expandR;
     // 第一步：扩展置换，32 -> 48
     for(int i=0; i<48; ++i)
@@ -144,8 +143,7 @@ bitset<32> f(bitset<32> R, bitset<48> k)
     // 第三步：查找S_BOX置换表
     bitset<32> output;
     int x = 0;
-    for(int i=0; i<48; i=i+6)
-    {
+    for(int i=0; i<48; i=i+6){
         int row = expandR[47-i]*2 + expandR[47-i-5];
         int col = expandR[47-i-1]*8 + expandR[47-i-2]*4 + expandR[47-i-3]*2 + expandR[47-i-4];
         int num = S_BOX[i/6][row][col];
@@ -166,12 +164,10 @@ bitset<32> f(bitset<32> R, bitset<48> k)
 /**
  *  对56位密钥的前后部分进行左移
  */
-bitset<28> leftShift(bitset<28> k, int shift)
-{
+bitset<28> leftShift(bitset<28> k, int shift){
     bitset<28> tmp = k;
-    for(int i=27; i>=0; --i)
-    {
-        if(i-shift<0)
+    for(int i=27; i>=0; --i){
+        if(i - shift<0)
             k[i] = tmp[i-shift+28];
         else
             k[i] = tmp[i-shift];
@@ -182,8 +178,7 @@ bitset<28> leftShift(bitset<28> k, int shift)
 /**
  *  生成16个48位的子密钥
  */
-void generateKeys()
-{
+void generateKeys(){
     bitset<56> realKey;
     bitset<28> left;
     bitset<28> right;
@@ -214,7 +209,7 @@ void generateKeys()
 }
 
 /**
- *  工具函数：将char字符数组转为二进制
+ *  将char字符数组转为二进制
  */
 bitset<64> charToBitset(const char s[8]){
     bitset<64> bits;
@@ -227,37 +222,41 @@ bitset<64> charToBitset(const char s[8]){
 /**
  *  DES加密
  */
-bitset<64> encrypt(bitset<64>& plain)
-{
+bitset<64> encrypt(bitset<64>& plain){
     bitset<64> cipher;
     bitset<64> currentBits;
     bitset<32> left;
     bitset<32> right;
     bitset<32> newLeft;
+
     // 第一步：初始置换IP
     for(int i=0; i<64; ++i)
         currentBits[63-i] = plain[64-IP[i]];
+
     // 第二步：获取 Li 和 Ri
     for(int i=32; i<64; ++i)
         left[i-32] = currentBits[i];
     for(int i=0; i<32; ++i)
         right[i] = currentBits[i];
+
     // 第三步：共16轮迭代
-    for(int round=0; round<16; ++round)
-    {
+    for(int round=0; round<16; ++round){
         newLeft = right;
         right = left ^ f(right,subKey[round]);
         left = newLeft;
     }
+
     // 第四步：合并L16和R16，注意合并为 R16L16
     for(int i=0; i<32; ++i)
         cipher[i] = left[i];
     for(int i=32; i<64; ++i)
         cipher[i] = right[i-32];
+
     // 第五步：结尾置换IP-1
     currentBits = cipher;
     for(int i=0; i<64; ++i)
         cipher[63-i] = currentBits[64-IP_1[i]];
+
     // 返回密文
     return cipher;
 }
@@ -265,56 +264,62 @@ bitset<64> encrypt(bitset<64>& plain)
 /**
  *  DES解密
  */
-bitset<64> decrypt(bitset<64>& cipher)
-{
+bitset<64> decrypt(bitset<64>& cipher){
     bitset<64> plain;
     bitset<64> currentBits;
     bitset<32> left;
     bitset<32> right;
     bitset<32> newLeft;
+
     // 第一步：初始置换IP
     for(int i=0; i<64; ++i)
         currentBits[63-i] = cipher[64-IP[i]];
+
     // 第二步：获取 Li 和 Ri
     for(int i=32; i<64; ++i)
         left[i-32] = currentBits[i];
     for(int i=0; i<32; ++i)
         right[i] = currentBits[i];
+
     // 第三步：共16轮迭代（子密钥逆序应用）
-    for(int round=0; round<16; ++round)
-    {
+    for(int round=0; round<16; ++round){
         newLeft = right;
         right = left ^ f(right,subKey[15-round]);
         left = newLeft;
     }
+
     // 第四步：合并L16和R16，注意合并为 R16L16
     for(int i=0; i<32; ++i)
         plain[i] = left[i];
     for(int i=32; i<64; ++i)
         plain[i] = right[i-32];
+
     // 第五步：结尾置换IP-1
     currentBits = plain;
     for(int i=0; i<64; ++i)
         plain[63-i] = currentBits[64-IP_1[i]];
+
     // 返回明文
     return plain;
 }
 
 int main() {
-    string s = "romantic";
+    string s = "nuaabest";
     string k = "12345678";
 
     bitset<64> plain = charToBitset(s.c_str());
+    cout << "The Plain is:" << endl;
     cout << plain.to_string() << endl;
     key = charToBitset(k.c_str());
     // 生成16个子密钥
     generateKeys();
 
     bitset<64> cipher = encrypt(plain);
-
+    cout << "The Cipher is:" << endl;
     cout << cipher.to_string() << endl;
 
     bitset<64> temp_plain = decrypt(cipher);
+    cout << "The Decrypted Plain is:" << endl;
     cout << temp_plain.to_string() << endl;
 
     return 0;
