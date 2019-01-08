@@ -6,7 +6,7 @@
 
 /*
  * 扩展欧几里得算法求乘法逆元
- * @name inv
+ * @name ExEuclid
  * @param a 被求数
  * @param n 模数
  */
