@@ -143,6 +143,6 @@ void sha1(string text, char *ch) {
         D1 = D = D + D1;
         E1 = E = E + E1;
     }
-    printf("%x%x%x%x%x\n", A1, B1, C1, D1, E1);
+    printf("The sha1 result of msg is: %x%x%x%x%x\n", A1, B1, C1, D1, E1);
     sprintf(ch,"%x%x%x%x%x", A1, B1, C1, D1, E1);
 }

@@ -130,9 +130,9 @@ void Task6(){
 
 
 int main(){
-//    Task1();
-//    Task2();
-//    Task3();
-//    Task5();
-//    Task6();
+    Task1();
+    Task2();
+    Task3();
+    Task5();
+    Task6();
 }
